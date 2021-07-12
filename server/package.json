@@ -1,0 +1,32 @@
+{
+  "name": "click-game",
+  "version": "1.0.0",
+  "description": "My implementation of How fast can you click",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "start": "node dist/index.js",
+    "start:dev": "ts-node-dev --respawn src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rumec/Click-game.git"
+  },
+  "author": "Dominik Rumian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rumec/Click-game/issues"
+  },
+  "homepage": "https://github.com/Rumec/Click-game#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.3.1",
+    "ts-node": "^10.1.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  }
+}
