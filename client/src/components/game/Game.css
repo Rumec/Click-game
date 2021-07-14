@@ -1,0 +1,22 @@
+.game {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game__button {
+    height: 7rem;
+    width: 13rem;
+}
+
+.game__click-count {
+    font-size: 6rem;
+}
+
+.game__timer {
+    font-size: 4rem;
+}
