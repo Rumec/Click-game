@@ -1,7 +1,7 @@
 import React from "react";
 
-export const helperFunctions = (timeElapsed: number, setTimeElapsed: React.Dispatch<React.SetStateAction<number>>,
-                                setGameInProgress: React.Dispatch<React.SetStateAction<boolean>>, GAME_DURATION_MS: number) => {
+export const gameStart = (timeElapsed: number, setTimeElapsed: React.Dispatch<React.SetStateAction<number>>,
+                          setGameInProgress: React.Dispatch<React.SetStateAction<boolean>>, GAME_DURATION_MS: number) => {
     setGameInProgress(true);
     setTimeElapsed(0.0);
 

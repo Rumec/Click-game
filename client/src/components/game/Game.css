@@ -1,9 +1,15 @@
 .game {
+    display: flex;
+    flex-direction: column;
     height: 100vh;
+}
+
+.game__window {
     width: 100vw;
 
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     align-items: center;
     justify-content: center;
 }
@@ -19,4 +25,13 @@
 
 .game__timer {
     font-size: 4rem;
+}
+
+.game__info-popup-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    width: 100%;
+    padding: 1rem 1rem 0 0;
 }
