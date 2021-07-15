@@ -4,6 +4,7 @@ import BEMHelper from 'react-bem-helper';
 import {Button, Row} from "react-bootstrap";
 import {gameStart, gameResults} from "./functionality/helperFunctions";
 import {InfoPopup} from "../infoPopup/InfoPopup";
+import {ResultsPopup} from "../resultsPopup/ResultsPopup";
 
 const GAME_DURATION_MS = 10000;
 
@@ -18,12 +19,16 @@ export const Game: React.FC = () => {
     const [gameInProgress, setGameInProgress] = useState(false);
     const [clickCount, setClickCount] = useState(0);
 
+    const [open, setOpen] = useState(false);
+    const closeModal = () => setOpen(false);
+
     /**
      * Using reference to be able to access actual value of clickCount
      */
     const clickCountRef = useRef(clickCount);
     clickCountRef.current = clickCount;
 
+    //TODO: refactor this horrible JSX
     return (
         <div {...classes()}>
             <div {...classes('info-popup-row')}>
@@ -53,7 +58,7 @@ export const Game: React.FC = () => {
                             if (!gameInProgress) {
                                 gameStart(timeElapsed, setTimeElapsed, setGameInProgress, GAME_DURATION_MS);
                                 setTimeout(() => {
-                                    gameResults(clickCountRef)
+                                    gameResults(setOpen);
                                 }, GAME_DURATION_MS + 1);
                             } else {
                                 setClickCount((clickCount) => clickCount + 1);
@@ -63,9 +68,12 @@ export const Game: React.FC = () => {
                 >
                     {(gameInProgress) ? "Click here" : "Start the game"}
                 </Button>
-
-
             </div>
+            <ResultsPopup
+                open={open}
+                closeModal={closeModal}
+                clickCountRef={clickCountRef}
+            />
         </div>
 
     );

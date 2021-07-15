@@ -15,7 +15,6 @@ export const gameStart = (timeElapsed: number, setTimeElapsed: React.Dispatch<Re
     }, GAME_DURATION_MS + 1);
 }
 
-export const gameResults = (clickCountRef:  React.MutableRefObject<number>) => {
-    window.alert(`You have clicked ${clickCountRef.current} times in total\n
-                        Meaning ${clickCountRef.current * 6} clicks per minute or ${clickCountRef.current / 10} clicks per second`);
+export const gameResults = (setOpen: React.Dispatch<React.SetStateAction<boolean>>) => {
+    setOpen(o => !o);
 }
