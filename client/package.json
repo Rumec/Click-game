@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://Rumec.github.io/click-game-online",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -18,13 +19,16 @@
   "devDependencies": {
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
+    "gh-pages": "^3.2.3",
     "typescript": "^4.3.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build": "tsc -p .",
+    "predeploy": "npm run build",
+    "deploy": "npm run build && gh-pages -d build",
+    "build": "react-scripts build",
     "watch": "tsc -p . -w"
   },
   "eslintConfig": {

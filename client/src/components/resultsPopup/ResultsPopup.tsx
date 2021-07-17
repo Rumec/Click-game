@@ -10,7 +10,7 @@ interface IResultsPopupPropsType {
 }
 
 export const ResultsPopup = (props: IResultsPopupPropsType) => {
-    const ref = useRef();
+    const ref = useRef(null);
     // @ts-ignore
     const closeTooltip = () => ref.current.close();
 

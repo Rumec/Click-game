@@ -8,9 +8,7 @@ import './InfoPopup.css';
 export const InfoPopup = () => (
     <Popup
         trigger={
-            <Button type="button" className="button">
-                Info
-            </Button>
+            <Button className={'info-button'}>Info</Button>
         }
         position={'left top'}
         on={['hover', 'focus']}
