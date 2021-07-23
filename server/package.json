@@ -7,6 +7,8 @@
     "build": "tsc --build",
     "start": "node dist/index.js",
     "start:dev": "ts-node-dev --respawn src/index.ts",
+    "migrate": "prisma migrate dev",
+    "seed": "ts-node ./src/sampleData.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,9 +22,13 @@
   },
   "homepage": "https://github.com/Rumec/Click-game#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "@prisma/client": "^2.27.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "prisma": "^2.27.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/node": "^16.3.1",
     "ts-node": "^10.1.0",
