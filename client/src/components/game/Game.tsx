@@ -5,6 +5,8 @@ import {Button, Row} from "react-bootstrap";
 import {gameStart, gameResults, buttonState} from "./functionality/helperFunctions";
 import {ResultsPopup} from "../resultsPopup/ResultsPopup";
 import {TopMenu} from "../topMenu/TopMenu";
+import useSWR from "swr";
+import {fetcher} from "../../helpers/fetcher";
 
 const GAME_DURATION_MS = 10000;
 
@@ -16,6 +18,11 @@ export const gameState = {
     ready: 0,
     inProgress: 1,
     finished: 2
+}
+
+export interface ITopPerson {
+    name: string,
+    clickCount: number
 }
 
 export const Game: React.FC = () => {
@@ -31,11 +38,9 @@ export const Game: React.FC = () => {
     const clickCountRef = useRef(clickCount);
     clickCountRef.current = clickCount;
 
-    // const { data, error } = useSWR('http://localhost:5000/api/topTen', fetcher);
-    //
-    // // TODO: předělat
-    // if (error) return <div>failed to load</div>
-    // if (!data) return <div>loading...</div>
+    const {data, error} = useSWR('http://localhost:5000/api/topTen', fetcher);
+    const minRecordValue = (data && !error) ? data.reduce((acum: ITopPerson, next: ITopPerson) => acum.clickCount < next.clickCount ? acum : next).clickCount :
+        99999;
 
     const handleClick = () => {
         switch (actualState) {
@@ -61,7 +66,7 @@ export const Game: React.FC = () => {
 
     return (
         <div {...classes()}>
-            <TopMenu />
+            <TopMenu/>
             <div {...classes('window')}>
                 <label htmlFor={'timer'}>Time elapsed:</label>
                 <Row
@@ -85,7 +90,9 @@ export const Game: React.FC = () => {
             <ResultsPopup
                 open={open}
                 closeModal={closeModal}
-                clickCountRef={clickCountRef}/>
+                clickCountRef={clickCountRef}
+                minRecordValue={minRecordValue}
+            />
         </div>
     );
 };
