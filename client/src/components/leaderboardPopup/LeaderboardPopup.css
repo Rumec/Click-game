@@ -1,0 +1,14 @@
+.popup-content {
+    padding: 1rem;
+    width: 90%;
+
+    border-radius: 1rem;
+}
+
+.result-table {
+    width: 100%;
+}
+
+th{
+    background-color: #a4a4a4;
+}

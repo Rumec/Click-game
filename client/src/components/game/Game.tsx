@@ -3,8 +3,8 @@ import './Game.css';
 import BEMHelper from 'react-bem-helper';
 import {Button, Row} from "react-bootstrap";
 import {gameStart, gameResults, buttonState} from "./functionality/helperFunctions";
-import {InfoPopup} from "../infoPopup/InfoPopup";
 import {ResultsPopup} from "../resultsPopup/ResultsPopup";
+import {TopMenu} from "../topMenu/TopMenu";
 
 const GAME_DURATION_MS = 10000;
 
@@ -18,13 +18,10 @@ export const gameState = {
     finished: 2
 }
 
-
 export const Game: React.FC = () => {
-
     const [timeElapsed, setTimeElapsed] = useState(0.0);
     const [actualState, setActualState] = useState(0);
     const [clickCount, setClickCount] = useState(0);
-
     const [open, setOpen] = useState(false);
     const closeModal = () => setOpen(false);
 
@@ -33,6 +30,12 @@ export const Game: React.FC = () => {
      */
     const clickCountRef = useRef(clickCount);
     clickCountRef.current = clickCount;
+
+    // const { data, error } = useSWR('http://localhost:5000/api/topTen', fetcher);
+    //
+    // // TODO: předělat
+    // if (error) return <div>failed to load</div>
+    // if (!data) return <div>loading...</div>
 
     const handleClick = () => {
         switch (actualState) {
@@ -58,7 +61,7 @@ export const Game: React.FC = () => {
 
     return (
         <div {...classes()}>
-            <div {...classes('info-popup-row')}><InfoPopup/></div>
+            <TopMenu />
             <div {...classes('window')}>
                 <label htmlFor={'timer'}>Time elapsed:</label>
                 <Row

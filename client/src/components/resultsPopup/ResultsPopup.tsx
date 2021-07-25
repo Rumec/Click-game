@@ -1,5 +1,6 @@
 import React, {useRef} from "react";
 import {Button} from "react-bootstrap";
+import './ResultsPopup.css';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
