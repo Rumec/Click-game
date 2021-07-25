@@ -1,5 +1,6 @@
 import React, {useRef, useState} from "react";
 import {Button, InputGroup, FormControl} from "react-bootstrap";
+import {mutate} from "swr";
 import './ResultsPopup.css';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -37,11 +38,15 @@ const HandleResult = (props: IHandleResultPropsType) => {
             .then(async response => {
                 if (!response.ok) {
                     console.log('There was an error sending the data!');
+                } else {
+                    // Forcing refetch
+                    await mutate('http://localhost:5000/api/topTen');
                 }
             })
             .catch(error => {
                 console.error('There was an error!', error);
             });
+        // Closing popup
         props.closeTooltip();
     }
 
